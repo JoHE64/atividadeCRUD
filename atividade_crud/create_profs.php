@@ -21,7 +21,7 @@ include 'db.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>inserindo aulas</title>
+        <title>inserindo profs</title>
     </head>
     <body>
         <form method="post" action="create_profs.php">
