@@ -12,9 +12,39 @@ include 'db.php';
         } else {
             echo "Deu ruim: " . $sql . "<br>" . $conn->error;
         }
-    }
+    } 
 
     $conn->close();
+
+    $sql = "SELECT * FROM professores;";
+
+    $result = $conn -> query($sql);
+
+    if ($result -> num_rows > 0){
+        echo "<table border='1'>
+            <tr>
+                <th> ID Professor </th>
+                <th> Nome </th>
+                <th> email </th>
+            </tr>";
+            while($row = $result -> fetch_assoc()){
+                echo "<tr>
+                        <td> {$row['id_professor']} </td>
+                        <td> {$row['nome']} </td>
+                        <td> {$row['email']} </td>
+
+                        <td>
+                            <a href='update.php?id={$row['id_professor']}'>Editar</a> |
+                            <a href='delete.php?id={$row['id_professor']}'>Excluir</a>
+                        </td>
+                    </tr>";
+            }
+        echo "</table>";
+    }else{
+        echo "Nenhum registro encontrado.";
+    }
+
+
 ?>
 
 <html lang="en">
@@ -28,7 +58,7 @@ include 'db.php';
             <h1> Adicionar professores</h1>
             Digite o nome do professor: <input type="text" name="nome" required> <br></br>
             Digite o Email do professor: <input type="email" name="email" required> <br></br>
-            <input type="submit" value="Adicionar">
+            <input type="submit" name="create_profs" value="Adicionar">
         </form>
     </body>
 </html>
