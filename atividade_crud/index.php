@@ -58,7 +58,7 @@
                         <td> {$row['materia']} </td>
                         <td> {$row['data_aula']} </td>
                         <td>
-                            <a href='update_aulas.php?id={$row['id_aula']}'>Editar</a> |
+                            <a href='update.php?id={$row['id_aula']}'>Editar</a> |
                             <a href='delete.php?id={$row['id_aula']}'>Excluir</a>
                         </td>
                     </tr>";
@@ -68,6 +68,32 @@
         echo "Nenhum registro encontrsado.";
     }
 
+    $sql = "SELECT * FROM professores;";
+
+    $result = $conn -> query($sql);
+
+    if ($result -> num_rows > 0){
+        echo "<table border='1'>
+            <tr>
+                <th> ID Professor </th>
+                <th> Nome </th>
+                <th> Email </th>
+            </tr>";
+            while($row = $result -> fetch_assoc()){
+                echo "<tr>
+                        <td> {$row['id_professor']} </td>
+                        <td> {$row['nome']} </td>
+                        <td> {$row['email']} </td>
+                        <td>
+                            <a href='update.php?id={$row['id_professor']}'>Editar</a> |
+                            <a href='delete_profs.php?id={$row['id_professor']}'>Excluir</a>
+                        </td>
+                    </tr>";
+            }
+        echo "</table>";
+    }else{
+        echo "Nenhum registro encontrsado.";
+    }
 
     ?>
     
