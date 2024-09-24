@@ -14,11 +14,6 @@
             </form>
         </form>
         </div>    
-        <div>
-            <hr>
-            <a href="create_profs.php">Deseja adcionar um novo professor?</a>
-        </div>
-
     </body>
  </html>
 <?php
@@ -58,14 +53,15 @@
                         <td> {$row['materia']} </td>
                         <td> {$row['data_aula']} </td>
                         <td>
-                            <a href='update.php?id={$row['id_aula']}'>Editar</a> |
+                            <a href='update_aulas.php?id={$row['id_aula']}'>Editar</a> |
                             <a href='delete.php?id={$row['id_aula']}'>Excluir</a>
                         </td>
                     </tr>";
             }
         echo "</table>";
+        echo "<br> <hr> <br>";
     }else{
-        echo "Nenhum registro encontrsado.";
+        echo "Nenhum registro encontrado.";
     }
 
     $sql = "SELECT * FROM professores;";
@@ -85,14 +81,15 @@
                         <td> {$row['nome']} </td>
                         <td> {$row['email']} </td>
                         <td>
-                            <a href='update.php?id={$row['id_professor']}'>Editar</a> |
+                            <a href='update_profs.php?id={$row['id_professor']}'>Editar</a> |
                             <a href='delete_profs.php?id={$row['id_professor']}'>Excluir</a>
                         </td>
                     </tr>";
             }
         echo "</table>";
+        echo "<a href='create_profs.php'>Deseja adicionar um novo professor?</a>";
     }else{
-        echo "Nenhum registro encontrsado.";
+        echo "Nenhum registro encontrado.";
     }
 
     ?>
