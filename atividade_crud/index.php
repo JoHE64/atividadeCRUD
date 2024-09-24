@@ -7,28 +7,22 @@
     <body>
         <div>
             <form method="POST">
-                Sala:<input type="text" name="sala" required>
-                Materia:<input type="text" name="materia" required>
-                data_aula:<input type="date" name="data_aula" required>
+                Sala de Aula:<input type="text" name="sala" required><br><br>
+                Materia:<input type="text" name="materia" required><br><br>
+                data_aula:<input type="date" name="data_aula" required><br><br><br>
                 <input type="submit" name="create_aula" value="Adcionar">
             </form>
-
+        </form>
         </div>    
-
+        <div>
+            <hr>
+            <a href="create_profs.php">Deseja adcionar um novo professor?</a>
+        </div>
 
     </body>
  </html>
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "crudAulas";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
-    }
+    include 'db.php';
 
     if (isset($_POST['create_aula'])) {
         $sala = $_POST['sala'];
@@ -64,7 +58,7 @@
                         <td> {$row['materia']} </td>
                         <td> {$row['data_aula']} </td>
                         <td>
-                            <a href='update.php?id={$row['id_aula']}'>Editar</a> |
+                            <a href='update_aulas.php?id={$row['id_aula']}'>Editar</a> |
                             <a href='delete.php?id={$row['id_aula']}'>Excluir</a>
                         </td>
                     </tr>";
@@ -76,3 +70,4 @@
 
 
     ?>
+    

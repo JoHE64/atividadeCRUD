@@ -6,7 +6,7 @@
 
     $id = $_GET['id'];
 
-    $sql = "DELETE FROM aulas WHERE id_aula=$id";
+    $sql = "DELETE FROM professores WHERE id_professor=$id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Registro excluído com sucesso";
@@ -16,6 +16,6 @@
 
     $conn -> close();
 
-    header ("Location: index.php");
+    header ("Location: create_profs.php");
     exit();
 ?>

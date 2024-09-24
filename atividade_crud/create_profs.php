@@ -14,8 +14,6 @@ include 'db.php';
         }
     } 
 
-    $conn->close();
-
     $sql = "SELECT * FROM professores;";
 
     $result = $conn -> query($sql);
@@ -25,25 +23,23 @@ include 'db.php';
             <tr>
                 <th> ID Professor </th>
                 <th> Nome </th>
-                <th> email </th>
+                <th> Email </th>
             </tr>";
             while($row = $result -> fetch_assoc()){
                 echo "<tr>
                         <td> {$row['id_professor']} </td>
                         <td> {$row['nome']} </td>
                         <td> {$row['email']} </td>
-
                         <td>
                             <a href='update.php?id={$row['id_professor']}'>Editar</a> |
-                            <a href='delete.php?id={$row['id_professor']}'>Excluir</a>
+                            <a href='delete_profs.php?id={$row['id_professor']}'>Excluir</a>
                         </td>
                     </tr>";
             }
         echo "</table>";
     }else{
-        echo "Nenhum registro encontrado.";
+        echo "Nenhum registro encontrsado.";
     }
-
 
 ?>
 
@@ -60,6 +56,9 @@ include 'db.php';
             Digite o Email do professor: <input type="email" name="email" required> <br></br>
             <input type="submit" name="create_profs" value="Adicionar">
         </form>
+        <div>
+            <a href="index.php">Voltar ao INDEX</a>
+        </div>
     </body>
 </html>
 
